@@ -17,7 +17,10 @@ align-items: center;
 cursor: pointer;
 color: whitesmoke;
 background-color: #373433;
-margin: 5px;
+margin-left: 2px;
+width: 70px;
+border: none;
+border-radius: 3px;
 `
 
 class InputsEspeciais extends React.Component{

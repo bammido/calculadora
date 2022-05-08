@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 const MainDiv = styled.div`
 display: flex ;
-width: 120px;
 flex-wrap: wrap;
 `
 
@@ -17,7 +16,9 @@ align-items: center;
 cursor: pointer;
 color: whitesmoke;
 background-color: #373433;
-margin: 5px;
+margin-left: 2px;
+margin-top: 2px;
+width: 70px;
 border: none;
 border-radius: 3px;
 `

@@ -18,7 +18,8 @@ align-items: center;
 cursor: pointer;
 color: whitesmoke;
 background-color: #373433;
-margin: 5px;
+margin-top: 2px;
+width: 81px;
 border: none;
 border-radius: 3px;
 `

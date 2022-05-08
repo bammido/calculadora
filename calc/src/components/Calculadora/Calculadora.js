@@ -7,12 +7,15 @@ import InputsOperacoes from "../InputsOperacoes/InputsOperacoes";
 const MainDiv = styled.div`
 display:flex;
 flex-direction: column;
-margin: auto;
 justify-content: flex-end;
+margin-top: 20px;
 
-width: 200px;
-height: 300px;
-background-color: #2C2726;
+
+width: 300px;
+height: 270px;
+/* background-color: #2C2726; */
+background-color: black;
+padding: 2px;
 `
 
 const DivInputs = styled.div`
@@ -27,7 +30,8 @@ font-size: 2em;
 display: flex;
 flex-direction: column;
 align-items: flex-end;
-width: 170px;
+border: 1px solid white;
+margin-bottom: 10px;
 `
 
 const DivNumerosMaisDIvEspeciais = styled.div`
@@ -80,9 +84,11 @@ onClickNumeros = (event)=>{
     }
     // adiciona casas no número da tela
     else{
-        evento = Number(evento)
-        numeroParaMostrarNaTEla = Number(`${this.state.tela}${evento}`) 
-        this.state.tela === 0 ? this.setState({tela: evento}) : this.setState({tela: numeroParaMostrarNaTEla})
+        if(`${this.state.tela}`.length < 15){
+            evento = Number(evento)
+            numeroParaMostrarNaTEla = Number(`${this.state.tela}${evento}`) 
+            this.state.tela === 0 ? this.setState({tela: evento}) : this.setState({tela: numeroParaMostrarNaTEla})
+        }
     }
 
 }
@@ -115,19 +121,23 @@ onClickOperacoes = (event)=>{
             valorParaOperar =this.state.valorParaOperar !== 0 ? this.state.valorParaOperar / this.state.tela : this.state.tela
         } 
     }
-
-
     
     (this.state.tela === 0 && this.state.valorParaOperar===0) || this.setState({valorParaOperar: valorParaOperar, tela: 0, operador: evento})
 }
 
     onClickEspeciais = (event)=>{
         const evento = event.target.value
+
+        // apaga todos os valores
         if(evento=== "CE"){
             this.setState({tela: 0, valorParaOperar: 0})
-        }else if(evento=== "C"){
+        }
+        // apaga somente a tela
+        else if(evento=== "C"){
             this.setState({tela: 0})
-        }else{
+        }
+        // apaga o último dígito
+        else{
             let telaNumeros = ''
             let telaNumerosArray = `${this.state.tela}`.split("")
             telaNumerosArray.pop()
@@ -143,7 +153,9 @@ onClickOperacoes = (event)=>{
         </ValorParaOperar>
         return <MainDiv>
             <Tela>
+                {/* valorParaOperar do state */}
                 {this.state.valorParaOperar!==0 && valorParaOperar }
+                {/* valor digitado na tela */}
                 {this.state.tela}
                 </Tela>
             <DivInputs>
